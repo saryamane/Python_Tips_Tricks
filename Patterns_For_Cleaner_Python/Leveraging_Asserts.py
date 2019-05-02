@@ -1,5 +1,6 @@
 from collections import namedtuple
 
+
 class Assertions_Usecase():
     """Assertions are meant to flag out things which are meant
     to be impossible to happen within the codebase, these are unrecoverable
