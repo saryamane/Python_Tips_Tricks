@@ -20,7 +20,7 @@ class Assertions_Usecase():
     def never_failing_asserts(self, discount):
         price = int(self.product['price'] * (1.0 - discount))
         prod_name = self.product['name']
-        assert(0 <= price <= self.product['price'], 'AssertionError')
+        assert(0 <= price <= self.product['price'], 'AssertionError') # noqa
         return 'Revised price of {} is now: ${}'.format(prod_name, price)
 
 
