@@ -22,7 +22,8 @@ class Solution():
 
 
 sol = Solution()
-print(sol.maxSubArray([1,2,3,4,-3,2,1]))
+print(sol.maxSubArray([1,2,-3,4,-3,2,1]))
 
 
 # Kadane's principle.
+# [1,3,0,4,1,3,4]
