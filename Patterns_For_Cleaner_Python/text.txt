@@ -1,2 +1,8 @@
-Hello, this is line1
-Now, this comes line2
+ABC1,10
+ABC1,20
+ABC2,5
+ABC3,9
+ABC1,10
+ABC2,7
+ABC2,7
+ABC3,9
