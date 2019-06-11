@@ -9,6 +9,5 @@ for line in f:
 
 for k, v in res_dict.items():
     print(k, end=",")
-    for i in v:
-        print(i.rstrip("\n"), end=",")
-    print("\n",)
+    v = ",".join(str(e.rstrip("\n")) for e in v)
+    print(v)
