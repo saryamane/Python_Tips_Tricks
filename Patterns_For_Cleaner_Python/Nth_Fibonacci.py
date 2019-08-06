@@ -19,3 +19,8 @@ class Solution:
 
 sol = Solution()
 print(sol.fib(6))
+
+# Do one with Memoization
+
+
+# Do one with iterative approach, which O(1) complexity.
