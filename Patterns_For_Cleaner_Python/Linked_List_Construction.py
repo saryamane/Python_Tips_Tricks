@@ -50,7 +50,7 @@ class DoublyLinkedList:
             return
         node = self.head
         currentPosition = 1
-        while node is not None and currentPosittion != position:
+        while node is not None and currentPosition != position:
             node = node.next
             currentPosition += 1
         if node is not None:
@@ -73,13 +73,11 @@ class DoublyLinkedList:
             self.tail = self.tail.prev
         self.removeNodeBindings(node)
 
-
     def containsNodeWithValue(self, value):
         node = self.head
         while node is not None and node.value != value:
             node = node.next
         return node is not None
-
 
     def removeNodeBindings(self, node):
         if node.prev is not None:
