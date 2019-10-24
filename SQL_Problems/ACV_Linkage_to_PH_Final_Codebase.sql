@@ -1272,8 +1272,6 @@ select * from (select distinct b.*, a.new_delta_exit_qty
                         and c.product_name not like 'ExactTarget %'
                      ) where DELTA_EXIT_QUANTITY = new_delta_exit_qty;
 
-alter table final_quarterly_asp_acv drop column Delta_Qty_Does_Match_PH;
-
 alter table final_quarterly_asp_acv add (Delta_Qty_Does_Match_PH_flg Varchar(50) DEFAULT 'Unknown');
 
 merge into final_quarterly_asp_acv a using PH_ACV_MISMATCH b on (b.FISCAL_YR_QTR_NUM = a.fiscal_yr_qtr_nm
@@ -1312,7 +1310,7 @@ select * from (select distinct a.*, b.DELTA_EXIT_TOTAL_PRICE_USD
                                    billing_frequency,
                                    currency_code,
                                    is_rul_flag,
-                                   sum(DLT_EXT_TOT_PRICE_USD_NEW) as DLT_EXT_TOT_PRICE_USD_NEW
+                                   sum(dlt_Total_ACV_Amount_usd_new) as dlt_Total_ACV_Amount_usd_new
                             from final_quarterly_asp_acv
                             group by fiscal_yr_qtr_nm, account_id, product_sku, pricebook_name, billing_frequency,
                                      currency_code, is_rul_flag
@@ -1339,7 +1337,7 @@ select * from (select distinct a.*, b.DELTA_EXIT_TOTAL_PRICE_USD
                                    billing_frequency,
                                    currency_code,
                                    is_rul_flag,
-                                   sum(DLT_EXT_TOT_PRICE_USD_NEW) as DLT_EXT_TOT_PRICE_USD_NEW
+                                   sum(dlt_Total_ACV_Amount_usd_new) as dlt_Total_ACV_Amount_usd_new
                             from final_quarterly_asp_acv
                             group by fiscal_yr_qtr_nm, account_id, product_sku, pricebook_name, billing_frequency,
                                      currency_code, is_rul_flag
@@ -1354,8 +1352,6 @@ select * from (select distinct a.*, b.DELTA_EXIT_TOTAL_PRICE_USD
                         and a.is_rul_flag = b.IS_RUL_FLAG
                         and a.fiscal_yr_qtr_nm between 20191 and 20202
                      ) where ROUND((ABS(DELTA_EXIT_TOTAL_PRICE_USD - dlt_Total_ACV_Amount_usd_new)/DECODE(DELTA_EXIT_TOTAL_PRICE_USD,0,1,DELTA_EXIT_TOTAL_PRICE_USD))*100,0) <= 5;
-
-alter table final_quarterly_asp_acv drop column AOV_ACV_Does_Match_PH_flg;
 
 alter table final_quarterly_asp_acv add (AOV_ACV_Does_Match_PH_flg Varchar(50) DEFAULT 'Unknown');
 
