@@ -38,6 +38,7 @@ create table PI_DM.RAW_ORDERS_ACV_LINK as
                         ceil(months_between(MAIN.ORDER_END_DATE, MAIN.ORDER_START_DATE))
                 ELSE MAIN.QUANTITY
             END                                                                 AS QUANTITY
+          , MAIN.ORIG_ORD_ITM_ID
           , CASE
                 WHEN GMV_PROD.GMV_SKU IS NOT NULL THEN MAIN.TOTAL_PRICE * 12 /
                                                        ceil(months_between(MAIN.ORDER_END_DATE, MAIN.ORDER_START_DATE)) -- 12/Term
@@ -128,6 +129,7 @@ create table PI_DM.RAW_ORDERS_ACV_LINK as
               , DOR.ORD_SUB_TYP                                                                  AS ORDER_SUB_TYPE
               , CASE WHEN FOI.QTY >= 0 THEN 'POSITIVE' ELSE 'NEGATIVE' END                       AS ORDER_TYPE_POS_NEG
               , FOI.QTY                                                                          AS QUANTITY
+              , FOI.ORIG_ORD_ITM_ID                                                              AS ORIG_ORD_ITM_ID
               , FOI.QTY * FOI.UNIT_PRC_AMT                                                       AS TOTAL_PRICE
               , (FOI.QTY * (FOI.UNIT_PRC_AMT * DER.CONV_RT))                                     AS TOTAL_PRICE_USD
               , FOI.LIST_PRC_AMT                                                                 AS LIST_PRICE

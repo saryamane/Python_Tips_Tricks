@@ -11,21 +11,23 @@ def isPalindrome(string):
     rev_str = orig_str[::-1]
     return orig_str == rev_str
 
+print(isPalindrome("abcdcba"))
+
 # This is O(n) in both time and space complexity.
 
 # Another approach:
 
 # Can you try by recurrsion approach.
 
+
 def isPalindrome(string, i=0):
     j = length(string) - 1 - i
-    return True if i >= j else string[i] == string[j]
-    and isPalindrome(string, i+1)
+    return True if i >= j else string[i] == string[j] and isPalindrome(string, i+1)
 
 # Good one on the recurrsion technique.
 
 # Can you do O(1) space using iterative array based approach:
-
+#
 def isPalindrome(string):
     leftIdx = 0
     rightIdx = length(string) - 1
