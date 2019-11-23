@@ -21,4 +21,4 @@ def helperPermutation(array, currentPerm, permutations):
             helperPermutation(newArray, newPerm, permutations)
 
 
-print(getPermutations([1,2,3,4,5,6]))
+print(getPermutations([1,2]))

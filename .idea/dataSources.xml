@@ -18,5 +18,13 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://ec2-18-214-58-108.compute-1.amazonaws.com:5432/d895ml81ke3cq2</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="SARYAMANE@AZPRD" uuid="91a69fb4-b3d6-4026-b3c5-fe61e1551834">
+      <driver-ref>oracle</driver-ref>
+      <synchronize>true</synchronize>
+      <remarks>Personal schema on AZPRD</remarks>
+      <auto-commit>false</auto-commit>
+      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@//db-azprd.internal.salesforce.com:1531/azprd_bu</jdbc-url>
+    </data-source>
   </component>
 </project>
